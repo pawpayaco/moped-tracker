@@ -1,0 +1,62 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#B8E6F5" opacity="0.3"/>
+
+  <!-- Moped body (main shape) -->
+  <ellipse cx="100" cy="100" rx="60" ry="40" fill="#FF6B6B" stroke="#fff" stroke-width="5"/>
+
+  <!-- Seat -->
+  <rect x="70" y="75" width="60" height="25" rx="12" fill="#FF8E53"/>
+
+  <!-- Windshield/handlebar area -->
+  <path d="M 60 75 Q 100 50 140 75" fill="none" stroke="#B8E6F5" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- Handlebar grips -->
+  <circle cx="60" cy="75" r="6" fill="#4ECDC4"/>
+  <circle cx="140" cy="75" r="6" fill="#4ECDC4"/>
+
+  <!-- Headlight (glowing) -->
+  <circle cx="100" cy="110" r="10" fill="#FFF4CC" opacity="0.95"/>
+  <circle cx="100" cy="110" r="15" fill="#FFF4CC" opacity="0.3"/>
+
+  <!-- Side mirror (left) -->
+  <ellipse cx="40" cy="85" rx="8" ry="5" fill="#B8E6F5" opacity="0.7"/>
+  <line x1="50" y1="85" x2="60" y2="80" stroke="#333" stroke-width="2"/>
+
+  <!-- Side mirror (right) -->
+  <ellipse cx="160" cy="85" rx="8" ry="5" fill="#B8E6F5" opacity="0.7"/>
+  <line x1="150" y1="85" x2="140" y2="80" stroke="#333" stroke-width="2"/>
+
+  <!-- Rear wheels -->
+  <circle cx="60" cy="130" r="15" fill="#333" stroke="#fff" stroke-width="4"/>
+  <circle cx="60" cy="130" r="8" fill="#666"/>
+
+  <!-- Front wheel -->
+  <circle cx="140" cy="130" r="15" fill="#333" stroke="#fff" stroke-width="4"/>
+  <circle cx="140" cy="130" r="8" fill="#666"/>
+
+  <!-- Wheel spokes -->
+  <line x1="60" y1="115" x2="60" y2="145" stroke="#fff" stroke-width="2"/>
+  <line x1="45" y1="130" x2="75" y2="130" stroke="#fff" stroke-width="2"/>
+  <line x1="140" y1="115" x2="140" y2="145" stroke="#fff" stroke-width="2"/>
+  <line x1="125" y1="130" x2="155" y2="130" stroke="#fff" stroke-width="2"/>
+
+  <!-- Exhaust pipe -->
+  <rect x="55" y="120" width="30" height="4" rx="2" fill="#666"/>
+
+  <!-- Exhaust smoke puffs -->
+  <circle cx="48" cy="122" r="4" fill="#ccc" opacity="0.5"/>
+  <circle cx="40" cy="124" r="5" fill="#ccc" opacity="0.3"/>
+  <circle cx="32" cy="126" r="6" fill="#ccc" opacity="0.15"/>
+
+  <!-- Direction arrow (speed indicator) -->
+  <path d="M 165 95 L 180 100 L 165 105 Z" fill="#4ECDC4"/>
+  <path d="M 175 95 L 190 100 L 175 105 Z" fill="#4ECDC4" opacity="0.6"/>
+
+  <!-- Fuel tank detail -->
+  <ellipse cx="100" cy="95" rx="25" ry="15" fill="#FF8E53" opacity="0.3"/>
+
+  <!-- Little flag/antenna for fun -->
+  <line x1="130" y1="75" x2="130" y2="50" stroke="#FF6B6B" stroke-width="3"/>
+  <path d="M 130 50 L 145 55 L 130 60 Z" fill="#FFF4CC"/>
+</svg>
