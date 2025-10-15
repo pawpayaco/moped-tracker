@@ -71,6 +71,7 @@ export async function fetchNearbyGasStations(lat, lng, radius = 5000) {
       body: query,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        'User-Agent': 'MopedFuel/1.0 (moped-tracker.vercel.app)',
       },
     })
 
@@ -149,7 +150,11 @@ export async function fetchRoute(start, end) {
   try {
     const url = `https://router.project-osrm.org/route/v1/driving/${start.lng},${start.lat};${end.lng},${end.lat}?overview=full&geometries=geojson&steps=true`
 
-    const response = await fetch(url)
+    const response = await fetch(url, {
+      headers: {
+        'User-Agent': 'MopedFuel/1.0 (moped-tracker.vercel.app)',
+      },
+    })
 
     if (!response.ok) {
       throw new Error('Failed to fetch route')
