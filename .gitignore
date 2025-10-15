@@ -41,3 +41,11 @@ next-env.d.ts
 *.swp
 *.swo
 *~
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+*.xcuserdatad/
+.DS_Store
+DerivedData/
+build/
