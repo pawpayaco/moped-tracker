@@ -28,6 +28,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  overflow: hidden;
 }
 
 body {
@@ -153,6 +157,22 @@ a {
 /* Mobile touch optimization */
 .leaflet-container {
   touch-action: pan-x pan-y;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* Safe area support for iOS notches */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+/* Ensure map tiles load properly */
+.leaflet-tile-container {
+  pointer-events: auto !important;
+}
+
+.leaflet-tile {
+  will-change: transform;
 }
 
 /* Floating button glow effect */

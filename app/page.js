@@ -61,8 +61,8 @@ export default function Home() {
     // Options for geolocation
     const options = {
       enableHighAccuracy: true, // Use GPS if available
-      timeout: 10000, // 10 second timeout
-      maximumAge: 0, // Don't use cached position
+      timeout: 30000, // 30 second timeout (mobile can be slower)
+      maximumAge: 5000, // Allow cached position up to 5 seconds old
     }
 
     // Success callback - update user location
@@ -98,18 +98,23 @@ export default function Home() {
   const reverseGeocode = async (lat, lng) => {
     try {
       const response = await fetch(
-        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`,
+        {
+          headers: {
+            'User-Agent': 'MopedFuel/1.0 (moped-tracker.vercel.app)',
+          },
+        }
       )
       const data = await response.json()
 
       if (data.address) {
-        const { road, neighbourhood, suburb, city } = data.address
-        const addr = road || neighbourhood || suburb || city || 'Unknown location'
+        const { road, neighbourhood, suburb, city, town, village } = data.address
+        const addr = road || neighbourhood || suburb || city || town || village || 'Location found'
         setCurrentAddress(addr)
       }
     } catch (error) {
       console.error('Reverse geocoding error:', error)
-      setCurrentAddress('Unknown location')
+      setCurrentAddress('Location found')
     }
   }
 
@@ -145,20 +150,20 @@ export default function Home() {
   return (
     <main className="relative w-screen h-screen overflow-hidden">
       {/* Top Status Bar - Shows current location */}
-      <div className="absolute top-0 left-0 right-0 z-[1000] bg-gradient-to-r from-coral to-teal text-white shadow-lg">
-        <div className="flex items-center justify-between px-4 py-3">
-          <div className="flex items-center space-x-2">
-            <span className="text-2xl">⛽</span>
-            <div>
-              <p className="text-xs font-semibold opacity-90">Current Location</p>
-              <p className="text-sm font-bold">{currentAddress}</p>
+      <div className="absolute top-0 left-0 right-0 z-[1000] bg-gradient-to-r from-coral to-teal text-white shadow-lg safe-area-top">
+        <div className="flex items-center justify-between px-3 py-2.5 gap-2">
+          <div className="flex items-center space-x-2 flex-1 min-w-0">
+            <span className="text-xl flex-shrink-0">⛽</span>
+            <div className="min-w-0 flex-1">
+              <p className="text-[10px] font-semibold opacity-90 uppercase tracking-wide">Location</p>
+              <p className="text-xs font-bold truncate">{currentAddress}</p>
             </div>
           </div>
 
           {/* Station count badge */}
           {gasStations.length > 0 && (
-            <div className="bg-white text-coral px-3 py-1 rounded-full text-sm font-bold">
-              {gasStations.length} stations
+            <div className="bg-white text-coral px-2.5 py-1 rounded-full text-xs font-bold flex-shrink-0">
+              {gasStations.length}
             </div>
           )}
         </div>

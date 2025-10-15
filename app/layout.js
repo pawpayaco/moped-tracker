@@ -25,8 +25,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* Leaflet CSS - Critical for map rendering */}
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossOrigin=""
+        />
+
         {/* Preconnect to map tile servers for faster loading */}
         <link rel="preconnect" href="https://tile.openstreetmap.org" />
+        <link rel="preconnect" href="https://a.basemaps.cartocdn.com" />
+        <link rel="preconnect" href="https://b.basemaps.cartocdn.com" />
+        <link rel="preconnect" href="https://c.basemaps.cartocdn.com" />
 
         {/* PWA manifest for mobile installation */}
         <meta name="mobile-web-app-capable" content="yes" />
