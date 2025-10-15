@@ -50,10 +50,28 @@ a {
   animation: float 3s ease-in-out infinite;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
   transition: transform 0.3s ease;
+  z-index: 1000 !important;
+  pointer-events: auto !important;
 }
 
 .moped-marker:hover {
   transform: scale(1.1);
+}
+
+/* Ensure SVG renders on mobile */
+.moped-marker svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 /* Exhaust trail effect for moped */
@@ -82,6 +100,8 @@ a {
   cursor: pointer;
   transition: all 0.3s ease;
   animation: pulse-slow 3s infinite;
+  z-index: 800 !important;
+  pointer-events: auto !important;
 }
 
 .fuel-marker:hover {
@@ -94,6 +114,25 @@ a {
   background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
   animation: pulse 1s infinite;
   box-shadow: var(--coral-glow);
+  z-index: 900 !important;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 /* Leaflet popup customization */
@@ -173,6 +212,31 @@ a {
 
 .leaflet-tile {
   will-change: transform;
+}
+
+/* Ensure markers and polylines render on mobile */
+.leaflet-marker-icon {
+  z-index: 600 !important;
+}
+
+.leaflet-marker-pane {
+  z-index: 600 !important;
+}
+
+.leaflet-overlay-pane {
+  z-index: 400 !important;
+}
+
+.leaflet-overlay-pane svg {
+  pointer-events: auto !important;
+}
+
+/* Force polylines to be visible */
+.leaflet-interactive {
+  pointer-events: auto !important;
+  stroke: #FF6B6B !important;
+  stroke-width: 5 !important;
+  fill: none !important;
 }
 
 /* Floating button glow effect */

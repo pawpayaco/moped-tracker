@@ -134,27 +134,24 @@ export default function Map({
   const mopedIcon = L.divIcon({
     className: 'moped-marker',
     html: `
-      <div style="position: relative; width: 50px; height: 50px;">
-        <svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <div style="position: relative; width: 50px; height: 50px; display: block;">
+        <svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display: block;">
           <!-- Moped body -->
-          <ellipse cx="50" cy="50" rx="35" ry="25" fill="#FF6B6B" stroke="#fff" stroke-width="3"/>
+          <ellipse cx="50" cy="50" rx="35" ry="25" fill="#FF6B6B" stroke="#fff" stroke-width="4"/>
 
           <!-- Windshield -->
-          <path d="M 35 35 Q 50 25 65 35" fill="none" stroke="#B8E6F5" stroke-width="4" stroke-linecap="round"/>
+          <path d="M 35 35 Q 50 25 65 35" fill="none" stroke="#B8E6F5" stroke-width="5" stroke-linecap="round"/>
 
           <!-- Headlight -->
-          <circle cx="50" cy="55" r="5" fill="#FFF4CC" opacity="0.9"/>
+          <circle cx="50" cy="55" r="6" fill="#FFF4CC" opacity="0.95"/>
 
           <!-- Wheels -->
-          <circle cx="30" cy="65" r="8" fill="#333" stroke="#fff" stroke-width="2"/>
-          <circle cx="70" cy="65" r="8" fill="#333" stroke="#fff" stroke-width="2"/>
+          <circle cx="30" cy="65" r="9" fill="#333" stroke="#fff" stroke-width="3"/>
+          <circle cx="70" cy="65" r="9" fill="#333" stroke="#fff" stroke-width="3"/>
 
           <!-- Direction indicator (small arrow) -->
-          <path d="M 75 45 L 85 50 L 75 55 Z" fill="#4ECDC4"/>
+          <path d="M 75 45 L 88 50 L 75 55 Z" fill="#4ECDC4" stroke="#fff" stroke-width="1"/>
         </svg>
-
-        <!-- Exhaust puffs container -->
-        <div id="exhaust-container"></div>
       </div>
     `,
     iconSize: [50, 50],
@@ -315,17 +312,18 @@ export default function Map({
         })}
 
         {/* Route Polyline to Nearest Station */}
-        {nearestStation?.route && (
+        {nearestStation?.route && nearestStation.route.length > 0 && (
           <Polyline
             positions={nearestStation.route}
             pathOptions={{
               color: '#FF6B6B',
-              weight: 5,
-              opacity: 0.8,
-              dashArray: '10, 10',
+              weight: 6,
+              opacity: 0.9,
+              dashArray: '12, 8',
               lineCap: 'round',
               lineJoin: 'round',
             }}
+            interactive={false}
           />
         )}
 
